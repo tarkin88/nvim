@@ -29,7 +29,7 @@ inoremap <expr> <c-k> ("\<C-p>")
 
 
 " Change into split panels
-nnoremap  <silent>   <M-tab> <C-w>w <CR>
+nnoremap  <silent>   <C-w> <C-w>w <CR>
 
 " Make an new habit
 " map <Left> <Nop>
@@ -37,9 +37,6 @@ nnoremap  <silent>   <M-tab> <C-w>w <CR>
 " map <Up> <Nop>
 " map <Down> <Nop>
 
-" Use the space key to toggle folds
-" nnoremap <silent> <space> za
-" vnoremap <silent> <space> zf
 
 " nnoremap <silent> <M-S-Right>    :vertical resize -2<CR>
 " nnoremap <silent> <M-S-Left>    :vertical resize +2<CR>

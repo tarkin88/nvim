@@ -5,7 +5,7 @@
   "diagnostic.format": "[%severity] %message [%source%code] ",
   "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.virtualText": true,
+  "diagnostic.virtualText": false,
   "diagnostic.virtualTextCurrentLineOnly": true,
   "list.indicator": ">",
   "diagnostic.errorSign": "✗ ",
@@ -25,7 +25,8 @@
     "typescriptreact",
     "yaml",
     "vue",
-    "vim"
+    "vim",
+    "python"
   ],
   "snippets.ultisnips.directories": [
     "UltiSnips",
@@ -33,7 +34,7 @@
   ],
   "coc.source.around.enable": true,
   "list.source.tags.command": "ctags -R .",
-  // "pyright.organizeimports.provider": "isort",
+  "pyright.organizeimports.provider": "isort",
   "python.analysis.diagnosticMode": "openFilesOnly",
   "python.analysis.typeCheckingMode": "basic",
   "python.formatting.provider": "black",
@@ -50,7 +51,7 @@
     "--errors-only"
   ],
   "python.linting.enabled": true,
-  // "python.linting.flake8Enabled": true,
+  "python.linting.flake8Enabled": true,
   "python.linting.pylintEnabled": true,
   "diagnostic.enableSign": true,
   "suggest.completionItemKindLabels": {

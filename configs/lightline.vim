@@ -1,8 +1,11 @@
 let g:lightline = {
+      \'enable': {
+      \   'tabline': 0
+      \ },
       \ 'colorscheme': 'everforest',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'relativepath', 'readonly', 'modified'] ],
+      \             [ 'gitbranch', 'relativepath', 'readonly', 'modified'] ],
       \   'right': [
         \ ['cocstatus'],
         \ ['lineinfo'], ['percent'],
@@ -13,6 +16,7 @@ let g:lightline = {
       \},
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
+      \ 'gitbranch': 'FugitiveHead'
       \ },
       \ 'mode_map': {
         \ 'n' : 'N',

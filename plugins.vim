@@ -10,9 +10,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 "            Colors
 " ---------------------------------------
   Plug 'sainnhe/everforest'
-  " Plug 'NTBBloodbath/doom-one.nvim'
   Plug 'nvim-treesitter/nvim-treesitter'
-  " Plug 'tweekmonster/startuptime.vim'
 " ---------------------------------------
 "            General stuff
 " ---------------------------------------
@@ -22,11 +20,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'itchyny/lightline.vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
   Plug 'lewis6991/impatient.nvim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
   " ---------------------------------------
   "            Code Quality
   " ---------------------------------------
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'honza/vim-snippets'
+  Plug 'tmhedberg/SimpylFold'
+  Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+
   " ---------------------------------------
   "            Navigation
   " ---------------------------------------
@@ -36,7 +39,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'vijaymarupudi/nvim-fzf'
   Plug 'kyazdani42/nvim-web-devicons' 
   Plug 'kyazdani42/nvim-tree.lua'
-  Plug 'akinsho/bufferline.nvim'
+  Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
   Plug 'liuchengxu/vista.vim', {'on': 'Vista'}
   Plug 'farmergreg/vim-lastplace'
   Plug 'folke/twilight.nvim'

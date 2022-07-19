@@ -20,9 +20,11 @@ source $HOME/.config/nvim/configs/carbon.vim
 source $HOME/.config/nvim/configs/coc.vim
 source $HOME/.config/nvim/configs/commentary.vim
 source $HOME/.config/nvim/configs/fzf_nvim.vim
+source $HOME/.config/nvim/configs/fugitive.vim
 source $HOME/.config/nvim/configs/gutentags.vim
 source $HOME/.config/nvim/configs/nvimtree.vim
 source $HOME/.config/nvim/configs/rooter.vim
+source $HOME/.config/nvim/configs/simplyfold.vim
 source $HOME/.config/nvim/configs/treesitter.vim
 source $HOME/.config/nvim/configs/twilight.vim
 source $HOME/.config/nvim/configs/vista.vim

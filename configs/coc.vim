@@ -6,7 +6,6 @@ let g:coc_global_extensions = [
     \ 'coc-dictionary',
     \ 'coc-docker',
     \ 'coc-json',
-    \ 'coc-git',
     \ 'coc-lists',
     \ 'coc-marketplace',
     \ 'coc-pairs',
