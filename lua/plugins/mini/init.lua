@@ -1,5 +1,5 @@
-return { 
-  'echasnovski/mini.nvim', 
+return {
+  "echasnovski/mini.nvim",
   version = false,
-  config= function() require("plugins.mini.modules") end
+  config = function() require "plugins.mini.modules" end,
 }

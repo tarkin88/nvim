@@ -2,8 +2,8 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
   init = function() vim.g.neo_tree_remove_legacy_commands = true end,
-opts = function()
-  local global_commands = {
+  opts = function()
+    local global_commands = {
       system_open = function(state) require("core.utils").system_open(state.tree:get_node():get_id()) end,
       parent_or_close = function(state)
         local node = state.tree:get_node()
@@ -60,8 +60,8 @@ opts = function()
         { event = "neo_tree_buffer_enter", handler = function(_) vim.opt_local.signcolumn = "auto" end },
       },
     }
-end,
+  end,
   keys = {
-      { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
-    },
+    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+  },
 }

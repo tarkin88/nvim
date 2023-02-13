@@ -1,4 +1,4 @@
-local g= vim.g
+local g = vim.g
 
 --disable_distribution_plugins
 g.loaded_gzip = 1
@@ -24,7 +24,7 @@ vim.g.mapleader = " "
 
 vim.api.nvim_set_keymap("n", " ", "", { noremap = true })
 vim.api.nvim_set_keymap("x", " ", "", { noremap = true })
-require("core.options")
-require("core.lazy")
-require("core.keymaps")
-require("core.autocmds")
+require "core.options"
+require "core.lazy"
+require "core.keymaps"
+require "core.autocmds"
