@@ -27,7 +27,7 @@ return {
         "lua",
         "markdown",
         "markdown_inline",
-        "pyhon",
+        "python",
         "query",
         "regex",
         "vim",

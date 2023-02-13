@@ -1,6 +1,6 @@
 return {
-   "rebelot/kanagawa.nvim",
+   "arturgoms/moonbow.nvim",
    config = function()
-     vim.cmd("colorscheme kanagawa")
+     vim.cmd("colorscheme moonbow")
    end
 }
