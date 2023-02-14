@@ -1,22 +1,13 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   version = false,
-  build = ":TSUpdate",
-  cmd = {
-    "TSBufDisable",
-    "TSBufEnable",
-    "TSBufToggle",
-    "TSDisable",
-    "TSEnable",
-    "TSToggle",
-    "TSInstall",
-    "TSInstallInfo",
-    "TSInstallSync",
-    "TSModuleInfo",
-    "TSUninstall",
-    "TSUpdate",
-    "TSUpdateSync",
+  dependencies = {
+    "windwp/nvim-ts-autotag",
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    "p00f/nvim-ts-rainbow",
+    "andymass/vim-matchup",
   },
+  build = ":TSUpdate",
   opts = {
     sync_install = false,
     ensure_installed = {
@@ -34,8 +25,24 @@ return {
       "yaml",
     },
     highlight = { enable = true },
-    indent = { enable = true, disable = { "python" } },
-    context_commentstring = { enable = true },
+    indent = {
+      enable = false,
+      disable = { "python" },
+    },
+
+    matchup = {
+      enable = true,
+      disable = { "c", "ruby" },
+    },
+    context_commentstring = { enable = true, enable_autocmd = false },
+    -- rainbow = {
+    --   enable = true,
+    --   disable = { "html" },
+    --   extended_mode = false,
+    --   max_file_lines = nil,
+    -- },
+    -- autopairs = { enable = true },
+    -- autotag = { enable = true },
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -46,5 +53,11 @@ return {
       },
     },
   },
-  config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end,
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+    -- Treesitter based folding
+    vim.opt.foldlevel = 20
+    vim.opt.foldmethod = "expr"
+    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+  end,
 }
