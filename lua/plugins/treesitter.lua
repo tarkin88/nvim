@@ -2,10 +2,11 @@ return {
   "nvim-treesitter/nvim-treesitter",
   version = false,
   dependencies = {
-    "windwp/nvim-ts-autotag",
     "JoosepAlviste/nvim-ts-context-commentstring",
-    "p00f/nvim-ts-rainbow",
-    "andymass/vim-matchup",
+    {
+      "andymass/vim-matchup",
+      config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
+    },
   },
   build = ":TSUpdate",
   opts = {
@@ -29,20 +30,12 @@ return {
       enable = false,
       disable = { "python" },
     },
-
     matchup = {
       enable = true,
       disable = { "c", "ruby" },
     },
     context_commentstring = { enable = true, enable_autocmd = false },
-    -- rainbow = {
-    --   enable = true,
-    --   disable = { "html" },
-    --   extended_mode = false,
-    --   max_file_lines = nil,
-    -- },
-    -- autopairs = { enable = true },
-    -- autotag = { enable = true },
+    autopairs = { enable = true },
     incremental_selection = {
       enable = true,
       keymaps = {
