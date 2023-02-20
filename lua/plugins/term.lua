@@ -3,12 +3,21 @@ return {
   cmd = { "ToggleTerm", "TermExec" },
   opts = {
     size = 10,
+    hide_numbers = true,
     open_mapping = [[<F7>]],
-    shading_factor = 2,
+    shading_factor = 0.3,
+    shade_filetypes = {},
+    shade_terminals = false,
+    start_in_insert = true,
+    persist_size = true,
     direction = "float",
     float_opts = {
       border = "curved",
       highlights = { border = "Normal", background = "Normal" },
+    },
+    winbar = {
+      enabled = false,
+      name_formatter = function(term) return term.name end,
     },
   },
   keys = {

@@ -14,10 +14,30 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup {
   spec = {
     { import = "plugins" },
+    { import = "langs" },
   },
   defaults = {
     lazy = false,
     version = false,
   },
   checker = { enabled = true },
+  install = { missing = true, colorscheme = { "tokyonight", "gruvbox" } },
+
+  performance = {
+    cache = {
+      enabled = true,
+    },
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 }

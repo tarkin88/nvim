@@ -3,12 +3,17 @@ return {
   version = false,
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
+    "https://gitlab.com/HiPhish/nvim-ts-rainbow2",
+    "RRethy/nvim-treesitter-endwise",
     {
       "andymass/vim-matchup",
-      config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
+      lazy = false,
+      enabled = true,
+      init = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
     },
   },
   build = ":TSUpdate",
+  event = "BufReadPost",
   opts = {
     sync_install = false,
     ensure_installed = {
@@ -32,7 +37,11 @@ return {
     },
     matchup = {
       enable = true,
-      disable = { "c", "ruby" },
+    },
+    rainbow = { enable = true },
+
+    endwise = {
+      enable = true,
     },
     context_commentstring = { enable = true, enable_autocmd = false },
     autopairs = { enable = true },

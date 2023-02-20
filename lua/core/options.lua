@@ -4,14 +4,12 @@ local cache_dir = vim.env.HOME .. "/.cache/nvim/"
 opt.autoindent = true
 opt.backupdir = cache_dir .. "backup/"
 opt.breakindentopt = "shift:2,min:20"
-opt.clipboard = "unnamedplus"
 opt.cmdheight = 0
 opt.colorcolumn = "100"
 opt.completeopt = "menu,menuone,noselect"
 opt.directory = cache_dir .. "swap/"
 opt.expandtab = true
-opt.foldlevelstart = 99
-opt.foldmethod = "marker"
+opt.foldcolumn = vim.fn.has "nvim-0.9" == 1 and "1" or nil -- show foldcolumn in nvim 0.9
 opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 opt.hidden = true
@@ -31,7 +29,7 @@ opt.relativenumber = true
 opt.ruler = false
 opt.scrolloff = 2
 opt.shiftwidth = 2
-opt.shortmess = "aoOTIcF"
+opt.shortmess:append("cC")
 opt.showbreak = "↳ "
 opt.showcmd = false
 opt.showmode = false
@@ -42,6 +40,7 @@ opt.smartcase = true
 opt.smarttab = true
 opt.spellfile = cache_dir .. "spell/en.uft-8.add"
 opt.spelloptions = "camel"
+opt.splitkeep = vim.fn.has "nvim-0.9" == 1 and "screen" or nil
 opt.swapfile = false
 opt.tabstop = 2
 opt.termguicolors = true
@@ -60,4 +59,17 @@ opt.wildignorecase = true
 opt.winblend = 10
 opt.winwidth = 30
 
+vim.opt.backspace:append { "nostop" }
+if vim.fn.has "nvim-0.9" == 1 then
+  vim.opt.diffopt:append "linematch:60"
+end
+
+vim.g.codelens_enabled = true
 vim.g.markdown_recommended_style = 0
+
+
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })

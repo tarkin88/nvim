@@ -1,44 +1,42 @@
 return {
-  "rose-pine/neovim",
-  name = "rose-pine",
+  "EdenEast/nightfox.nvim",
   lazy = false,
   priority = 1000,
   opts = {
-    dark_variant = "moon",
-    bold_vert_split = true,
-    dim_nc_background = false,
-    disable_background = false,
-    disable_float_background = false,
-    disable_italics = false,
-    groups = {
-      background = "base",
-      panel = "surface",
-      border = "highlight_med",
-      comment = "muted",
-      link = "iris",
-      punctuation = "subtle",
-
-      error = "love",
-      hint = "iris",
-      info = "foam",
-      warn = "gold",
-
-      headings = {
-        h1 = "iris",
-        h2 = "foam",
-        h3 = "rose",
-        h4 = "gold",
-        h5 = "pine",
-        h6 = "foam",
+    options = {
+      compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+      compile_file_suffix = "_compiled",
+      dim_inactive = true,
+      styles = {
+        comments = "italic",
+        keywords = "bold",
+        types = "italic,bold",
+      },
+      module_default = false,
+      modules = {
+        aerial = true,
+        cmp = true,
+        ["dap-ui"] = true,
+        diagnostic = true,
+        gitsigns = true,
+        hop = true,
+        native_lsp = true,
+        neotree = true,
+        notify = true,
+        telescope = true,
+        treesitter = true,
+        tsrainbow = true,
+        whichkey = true,
       },
     },
-
-    highlight_groups = {
-      ColorColumn = { bg = "surface" },
+    groups = {
+      all = {
+        NormalFloat = { link = "Normal" },
+      },
     },
   },
   config = function(_, opts)
-    require("rose-pine").setup(opts)
-    vim.cmd "colorscheme rose-pine"
+    require("nightfox").setup(opts)
+    vim.cmd "colorscheme terafox"
   end,
 }

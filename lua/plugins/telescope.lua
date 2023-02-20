@@ -6,29 +6,67 @@ return {
   cmd = "Telescope",
   opts = function()
     local actions = require "telescope.actions"
+    local icons = require "core.icons"
     return {
       defaults = {
-        path_display = { "truncate" },
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+        },
+        prompt_prefix = icons.ui.Telescope .. " ",
+        selection_caret = icons.ui.Forward .. " ",
         sorting_strategy = "ascending",
-        layout_config = {
-          horizontal = {
-            prompt_position = "top",
-            preview_width = 0.55,
+        layout_strategy = "horizontal",
+        border = {},
+        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        color_devicons = true,
+        file_sorter = require("telescope.sorters").get_fuzzy_file,
+        path_display = { shorten = 7 },
+      },
+      pickers = {
+        find_files = {
+          theme = "dropdown",
+          previewer = false,
+          hidden = true,
+          find_command = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--files",
+            "--hidden", "-g", "!.git"
           },
-          vertical = {
-            mirror = false,
-          },
-          width = 0.87,
-          height = 0.80,
-          preview_cutoff = 120,
+        },
+        oldfiles = {
+          theme = "dropdown",
+          previewer = false,
+          hidden = true,
+        },
+        git_status = {
+          theme = "dropdown",
+        },
+        buffers = {
+          theme = "dropdown",
+          previewer = false,
+        },
+        lsp_document_symbols = {
+          theme = "dropdown",
         },
       },
       extensions = {
         fzf = {
-          fuzzy = true, -- false will only do exact matching
-          override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
         },
       },
     }
@@ -39,10 +77,12 @@ return {
     telescope.load_extension "fzf"
   end,
   keys = {
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-    { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-    { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Old files" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>",  desc = "Find files" },
+    { "<C-p>",      "<cmd>Telescope find_files<cr>",  desc = "Find files" },
+    { "<leader>fo", "<cmd>Telescope oldfiles<cr>",    desc = "Old files" },
     { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Search and string" },
-    { "<leader>fl", "<cmd>Telescope live_grep<cr>", desc = "Live serch" },
+    { "<leader>fS", "<cmd>Telescope live_grep<cr>",   desc = "Live serch" },
+    { "<leader>fg", "<cmd>Telescope git_status<cr>",  desc = "Buffers" },
+    { "<A-Up>",     "<cmd>Telescope buffers<cr>",     desc = "Buffers" },
   },
 }
