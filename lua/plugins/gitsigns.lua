@@ -11,4 +11,7 @@ return {
     },
   },
   config = true,
+  keys = {
+    { "<leader>gl", "<cmd>Gitsigns blame_line<cr>", desc = "Git blame" }
+  }
 }
