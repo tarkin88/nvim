@@ -19,7 +19,6 @@ return {
         config = function(_, opts)
           require("mason-lspconfig").setup(opts)
         end
-
       },
       "hrsh7th/cmp-nvim-lsp",
     },

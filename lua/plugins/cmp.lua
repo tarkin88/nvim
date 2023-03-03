@@ -11,7 +11,6 @@ return {
       {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
-
         opts = {
           check_ts = true,
           ts_config = { java = false },
@@ -59,11 +58,11 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert {
-          ["<C-b>"] = cmp.mapping.scroll_docs( -4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping {
+              ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+              ["<C-f>"] = cmp.mapping.scroll_docs(4),
+              ["<C-Space>"] = cmp.mapping.complete(),
+              ["<C-e>"] = cmp.mapping.abort(),
+              ["<CR>"] = cmp.mapping {
             i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
             c = function(fallback)
               if cmp.visible() then
@@ -73,7 +72,7 @@ return {
               end
             end,
           },
-          ["<C-j>"] = cmp.mapping(function(fallback)
+              ["<C-j>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -88,11 +87,11 @@ return {
             "s",
             "c",
           }),
-          ["<C-k>"] = cmp.mapping(function(fallback)
+              ["<C-k>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
-            elseif luasnip.jumpable( -1) then
-              luasnip.jump( -1)
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
             else
               fallback()
             end
@@ -180,10 +179,13 @@ return {
         function()
           return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<C-j>"
         end,
-        expr = true, remap = true, silent = true, mode = "i",
+        expr = true,
+        remap = true,
+        silent = true,
+        mode = "i",
       },
-      { "<C-j>", function() require("luasnip").jump(1) end,   mode = "s" },
-      { "<C-k>", function() require("luasnip").jump( -1) end, mode = { "i", "s" } },
+      { "<C-j>", function() require("luasnip").jump(1) end,  mode = "s" },
+      { "<C-k>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
   },
 }

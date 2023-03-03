@@ -2,6 +2,10 @@ local map = require("core.utils").map
 local opts = { silent = true, noremap = true }
 
 -- NORMAL
+-- Remap for dealing with word wrap
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
 map("n", "<C-s>", "<cmd>w<CR>", opts)
 map("n", "<C-q>", "<cmd>q<CR>", opts)
 map("n", "<ESC>", [[<C-\><C-n>]], opts)

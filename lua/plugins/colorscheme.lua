@@ -16,7 +16,7 @@ return {
       modules = {
         aerial = true,
         cmp = true,
-        ["dap-ui"] = true,
+            ["dap-ui"] = true,
         diagnostic = true,
         gitsigns = true,
         hop = true,

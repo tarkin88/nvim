@@ -21,7 +21,7 @@ return {
             shrink_margin = false,
           },
         },
-        { type = "padding", val = 2 },
+        { type = "padding", val = 5 },
 
         startify.section.mru_cwd,
         startify.section.mru,

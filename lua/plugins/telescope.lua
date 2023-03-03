@@ -82,7 +82,6 @@ return {
     { "<leader>fo", "<cmd>Telescope oldfiles<cr>",    desc = "Old files" },
     { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Search and string" },
     { "<leader>fS", "<cmd>Telescope live_grep<cr>",   desc = "Live serch" },
-    { "<leader>fg", "<cmd>Telescope git_status<cr>",  desc = "Buffers" },
     { "<A-Up>",     "<cmd>Telescope buffers<cr>",     desc = "Buffers" },
   },
 }

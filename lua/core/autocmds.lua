@@ -1,25 +1,31 @@
-local function augroup(name) return vim.api.nvim_create_augroup("nvim_" .. name, { clear = true }) end
-
 -- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup "highlight_yank",
-  callback = function() vim.highlight.on_yank() end,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
 })
+
+-- Check if we need to reload the file when it changed
+vim.api.nvim_create_autocmd("FocusGained", { command = "checktime" })
 
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
-  group = augroup "last_loc",
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= lcount then pcall(vim.api.nvim_win_set_cursor, 0, mark) end
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
   end,
 })
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup "close_with_q",
   pattern = {
+    "git",
     "qf",
     "help",
     "man",
@@ -38,11 +44,33 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup "wrap_spell",
   pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+  end,
+})
+
+
+-- Auto toggle hlsearch
+local ns = vim.api.nvim_create_namespace "toggle_hlsearch"
+local function toggle_hlsearch(char)
+  if vim.fn.mode() == "n" then
+    local keys = { "<CR>", "n", "N", "*", "#", "?", "/" }
+    local new_hlsearch = vim.tbl_contains(keys, vim.fn.keytrans(char))
+
+    if vim.opt.hlsearch:get() ~= new_hlsearch then
+      vim.opt.hlsearch = new_hlsearch
+    end
+  end
+end
+vim.on_key(toggle_hlsearch, ns)
+
+vim.api.nvim_set_hl(0, "TerminalCursorShape", { underline = true })
+
+vim.api.nvim_create_autocmd("TermEnter", {
+  callback = function()
+    vim.cmd [[setlocal winhighlight=TermCursor:TerminalCursorShape]]
   end,
 })
 

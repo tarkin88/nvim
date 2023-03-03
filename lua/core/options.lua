@@ -9,7 +9,6 @@ opt.colorcolumn = "100"
 opt.completeopt = "menu,menuone,noselect"
 opt.directory = cache_dir .. "swap/"
 opt.expandtab = true
-opt.foldcolumn = vim.fn.has "nvim-0.9" == 1 and "1" or nil -- show foldcolumn in nvim 0.9
 opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 opt.hidden = true
@@ -66,8 +65,6 @@ end
 
 vim.g.codelens_enabled = true
 vim.g.markdown_recommended_style = 0
-
-
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
