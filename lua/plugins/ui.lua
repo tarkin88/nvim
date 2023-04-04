@@ -12,10 +12,10 @@ return {
         },
       },
       presets = {
-        command_palette = true,       -- position the cmdline and popupmenu together
+        command_palette = false,      -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false,       -- add a border to hover docs and signature help
+        lsp_doc_border = true,        -- add a border to hover docs and signature help
       },
     },
   },
@@ -38,8 +38,8 @@ return {
   {
     "RRethy/vim-illuminate",
     event = "BufReadPost",
-    opts = { delay = 200 },
-    config = function(_, opts) require("illuminate").configure(opts) end,
+    opts = { delay = 150 },
+    config = function(_, opts) require("illuminate").configure(opts) end
   },
   {
     "m-demare/hlargs.nvim",
@@ -88,4 +88,25 @@ return {
       require("lspkind").init(opts)
     end
   },
+  -- {
+  --   "cshuaimin/ssr.nvim",
+  --   opts = {
+  --     border = "rounded",
+  --     min_width = 50,
+  --     min_height = 5,
+  --     max_width = 120,
+  --     max_height = 25,
+  --     keymaps = {
+  --       close = "q",
+  --       next_match = "n",
+  --       prev_match = "N",
+  --       replace_confirm = "<cr>",
+  --       replace_all = "<leader><cr>",
+  --     },
+  --   },
+  --   --stylua: ignore
+  --   keys = {
+  --     { "<leader>sr", function() require("ssr").open() end, mode = { "n", "x" }, desc = "Search and Replace (SSR)" },
+  --   },
+  -- },
 }

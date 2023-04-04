@@ -2,11 +2,10 @@ return {
   "akinsho/toggleterm.nvim",
   cmd = { "ToggleTerm", "TermExec" },
   opts = {
-    size = 10,
+    size = 20,
     hide_numbers = true,
     open_mapping = [[<F7>]],
-    shading_factor = 2,
-
+    shading_factor = 0.3,
     direction = "float",
     float_opts = {
       border = "curved",

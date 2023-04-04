@@ -62,17 +62,17 @@ return {
     vim.opt.foldmethod = "expr"
     vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
-    vim.api.nvim_create_autocmd("FileType", {
-      callback = function(_)
-        local parsers = require 'nvim-treesitter.parsers'
+    -- vim.api.nvim_create_autocmd("FileType", {
+    --   callback = function(_)
+    --     local parsers = require 'nvim-treesitter.parsers'
 
-        local lang = parsers.get_buf_lang()
-        if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
-          vim.schedule_wrap(function()
-            vim.cmd("TSInstall " .. lang)
-          end)()
-        end
-      end,
-    })
+    --     local lang = parsers.get_buf_lang()
+    --     if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
+    --       vim.schedule_wrap(function()
+    --         vim.cmd("TSInstall " .. lang)
+    --       end)()
+    --     end
+    --   end,
+    -- })
   end
 }

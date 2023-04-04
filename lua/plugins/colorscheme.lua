@@ -1,42 +1,51 @@
 return {
-  "EdenEast/nightfox.nvim",
-  lazy = false,
-  priority = 1000,
+  "catppuccin/nvim",
+  name = "catppuccin",
   opts = {
-    options = {
-      compile_path = vim.fn.stdpath("cache") .. "/nightfox",
-      compile_file_suffix = "_compiled",
-      dim_inactive = true,
-      styles = {
-        comments = "italic",
-        keywords = "bold",
-        types = "italic,bold",
-      },
-      module_default = false,
-      modules = {
-        aerial = true,
-        cmp = true,
-            ["dap-ui"] = true,
-        diagnostic = true,
-        gitsigns = true,
-        hop = true,
-        native_lsp = true,
-        neotree = true,
-        notify = true,
-        telescope = true,
-        treesitter = true,
-        tsrainbow = true,
-        whichkey = true,
-      },
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    background = {
+      -- :h background
+      light = "latte",
+      dark = "mocha",
     },
-    groups = {
-      all = {
-        NormalFloat = { link = "Normal" },
-      },
+    transparent_background = false,
+    show_end_of_buffer = false, -- show the '~' characters after the end of buffers
+    term_colors = false,
+    dim_inactive = {
+      enabled = false,
+      shade = "dark",
+      percentage = 0.15,
+    },
+    no_italic = false, -- Force no italic
+    no_bold = false,   -- Force no bold
+    styles = {
+      comments = { "italic" },
+      conditionals = { "italic" },
+      loops = {},
+      functions = {},
+      keywords = {},
+      strings = {},
+      variables = {},
+      numbers = {},
+      booleans = {},
+      properties = {},
+      types = {},
+      operators = {},
+    },
+    color_overrides = {},
+    custom_highlights = {},
+    integrations = {
+      cmp = true,
+      gitsigns = true,
+      nvimtree = true,
+      telescope = true,
+      notify = false,
+      mini = false,
+      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
   },
   config = function(_, opts)
-    require("nightfox").setup(opts)
-    vim.cmd "colorscheme terafox"
-  end,
+    require("catppuccin").setup(opts)
+    vim.cmd.colorscheme "catppuccin"
+  end
 }

@@ -41,6 +41,8 @@ return {
     config = function()
       local cmp = require "cmp"
       local luasnip = require "luasnip"
+      local compare = require "cmp.config.compare"
+
       local icons = require "core.icons"
 
       local has_words_before = function()
@@ -51,6 +53,19 @@ return {
       cmp.setup {
         completion = {
           completeopt = "menu,menuone,noinsert",
+        },
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            compare.score,
+            compare.recently_used,
+            compare.offset,
+            compare.exact,
+            compare.kind,
+            compare.sort_text,
+            compare.length,
+            compare.order,
+          },
         },
         snippet = {
           expand = function(args)

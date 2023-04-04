@@ -3,8 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "j-hui/fidget.nvim",  config = true },
+      { "j-hui/fidget.nvim", config = true },
       "williamboman/mason.nvim",
       {
         "williamboman/mason-lspconfig.nvim",

@@ -47,6 +47,7 @@ return {
         sources = {
           nls.builtins.formatting.black,
           nls.builtins.formatting.isort,
+          -- nls.builtins.diagnostics.pylint,
           nls.builtins.code_actions.refactoring,
         },
       }
