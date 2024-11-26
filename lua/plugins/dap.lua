@@ -1,5 +1,6 @@
 return {
   "rcarriga/nvim-dap-ui",
+  enabled = false,
   dependencies = {
     {
       "mfussenegger/nvim-dap",
@@ -23,12 +24,12 @@ return {
       },
       config = function()
         -- setup dap config by VsCode launch.json file
-        local vscode = require("dap.ext.vscode")
-        local json = require("plenary.json")
+        local vscode = require "dap.ext.vscode"
+        local json = require "plenary.json"
         vscode.json_decode = function(str) return vim.json.decode(json.json_strip_comments(str)) end
 
         -- Extends dap.configurations with entries read from .vscode/launch.json
-        if vim.fn.filereadable(".vscode/launch.json") then vscode.load_launchjs() end
+        if vim.fn.filereadable ".vscode/launch.json" then vscode.load_launchjs() end
       end,
     },
     "nvim-neotest/nvim-nio",
@@ -45,7 +46,7 @@ return {
     { "theHamsta/nvim-dap-virtual-text", config = true },
   },
   keys = {
-    { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
+    { "<leader>du", function() require("dapui").toggle {} end, desc = "Dap UI" },
     { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = { "n", "v" } },
   },
   opts = {
@@ -88,8 +89,8 @@ return {
     },
   },
   config = function(_, opts)
-    local dap = require("dap")
-    local dapui = require("dapui")
+    local dap = require "dap"
+    local dapui = require "dapui"
     dapui.setup(opts)
 
     dap.listeners.before.attach.dapui_config = function() dapui.open() end

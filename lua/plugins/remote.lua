@@ -1,5 +1,6 @@
 return {
   "amitds1997/remote-nvim.nvim",
+  enable = false,
   version = "*", -- Pin to GitHub releases
   cmd = "RemoteStart",
   keys = {
@@ -24,7 +25,7 @@ return {
     end,
   },
   config = function(_, opts)
-    local remote = require("remote-nvim")
+    local remote = require "remote-nvim"
     remote.setup(opts)
   end,
 }

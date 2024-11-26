@@ -55,7 +55,7 @@ local function get_handlers()
     lsp_keymaps(bufnr)
     local success, illuminate = pcall(require, "illuminate")
     if not success then
-      vim.notify("Failed to load plugin: illuminate")
+      vim.notify "Failed to load plugin: illuminate"
       return
     end
 
@@ -71,10 +71,10 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    require("plugins.mason"),
+    require "plugins.mason",
     "williamboman/mason-lspconfig.nvim",
     "RRethy/vim-illuminate",
-    "saghen/blink.cmp",
+    -- "saghen/blink.cmp",
   },
 
   config = function()
@@ -114,9 +114,9 @@ return {
 
     vim.diagnostic.config(config)
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-    vim.lsp.handlers["textDocument/signatureHelp"] =
-      vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+    -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+    -- vim.lsp.handlers["textDocument/signatureHelp"] =
+    --   vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
     require("lspconfig.ui.windows").default_options.border = "rounded"
 
     local servers = {
@@ -127,14 +127,14 @@ return {
       "yamlls",
     }
 
-    require("mason-lspconfig").setup({
+    require("mason-lspconfig").setup {
       ensure_installed = servers,
       automatic_installation = true,
-    })
+    }
 
     local success, lspconfig = pcall(require, "lspconfig")
     if not success then
-      vim.notify("Failed to load plugin: lspconfig")
+      vim.notify "Failed to load plugin: lspconfig"
       return
     end
 
@@ -145,7 +145,7 @@ return {
       opts = {
         on_attach = handlers.on_attach,
         -- capabilities = handlers.capabilities,
-        capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities),
+        -- capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities),
       }
 
       server = vim.split(server, "@")[1]
