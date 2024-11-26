@@ -7,6 +7,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "zbirenbaum/copilot.lua",
       {
         "zbirenbaum/copilot-cmp",
         config = function() require("copilot_cmp").setup() end,
@@ -51,6 +52,10 @@ return {
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
       end
+      require("copilot").setup {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      }
 
       cmp.setup {
         completion = {
@@ -130,7 +135,7 @@ return {
           }),
         },
         sources = cmp.config.sources {
-          -- { name = "copilot" },
+          { name = "copilot" },
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
@@ -140,28 +145,28 @@ return {
         },
         formatting = {
           fields = { "kind", "abbr", "menu" },
-          -- format = function(entry, item)
-          --   local max_width = 0
-          --   local source_names = {
-          --     copilot = "(Copilot)",
-          --     nvim_lsp = "(LSP)",
-          --     path = "(Path)",
-          --     luasnip = "(Snippet)",
-          --     buffer = "(Buffer)",
-          --   }
-          --   local duplicates = {
-          --     buffer = 1,
-          --     path = 1,
-          --     nvim_lsp = 0,
-          --     luasnip = 1,
-          --   }
-          --   local duplicates_default = 0
-          --   if max_width ~= 0 and #item.abbr > max_width then item.abbr = string.sub(item.abbr, 1, max_width - 1) end
-          --   item.kind = icons.kind[item.kind]
-          --   item.menu = source_names[entry.source.name]
-          --   item.dup = duplicates[entry.source.name] or duplicates_default
-          --   return item
-          -- end,
+          format = function(entry, item)
+            local max_width = 0
+            local source_names = {
+              copilot = "(Copilot)",
+              nvim_lsp = "(LSP)",
+              path = "(Path)",
+              luasnip = "(Snippet)",
+              buffer = "(Buffer)",
+            }
+            local duplicates = {
+              buffer = 1,
+              path = 1,
+              nvim_lsp = 0,
+              luasnip = 1,
+            }
+            local duplicates_default = 0
+            if max_width ~= 0 and #item.abbr > max_width then item.abbr = string.sub(item.abbr, 1, max_width - 1) end
+            item.kind = item.kind
+            item.menu = source_names[entry.source.name]
+            item.dup = duplicates[entry.source.name] or duplicates_default
+            return item
+          end,
         },
       }
       -- Auto pairs
